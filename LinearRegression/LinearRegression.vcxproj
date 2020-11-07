@@ -153,7 +153,7 @@
     <ClCompile Include="hypothesis.cpp" />
     <ClCompile Include="hypothesis_printer.cpp" />
     <ClCompile Include="hypothesis_printer_iterator.cpp" />
-    <ClCompile Include="linear_regression.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="load_data.cpp" />
     <ClCompile Include="simple_function.cpp" />
   </ItemGroup>

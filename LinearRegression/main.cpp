@@ -1,14 +1,15 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <algorithm>
 #include<time.h>
 #include <cstdint>
+#include <sstream>
 #include "data_sample.hpp"
 #include "load_data.hpp"
 #include "exceptions.hpp"
 #include "hypothesis.hpp"
 #include "cost_function.hpp"
-
 
 
 std::vector<double> apply_gradient_decent_on_thethas(const std::shared_ptr<Hypothesis> hypothesis,
@@ -27,13 +28,23 @@ std::vector<double> apply_gradient_decent_on_thethas(const std::shared_ptr<Hypot
 
 void train_hypothesis(std::shared_ptr<Hypothesis> hypothesis, DataSetPtr data_set)
 {
-    static const double TRAINING_ENDED = 0.6;
+    static const double TRAINING_ENDED = 0.5;
     CostFunction cost_function(data_set);
+
+    static const std::wstring COST_FUNCTION_LOG_NAME = L"../cost_function.txt";
+    std::wofstream log_file(COST_FUNCTION_LOG_NAME);
+    auto write_to_file = [&log_file](double measure) {
+        static const uint32_t PRECISION = 12;
+        log_file.precision(PRECISION);
+        log_file << measure << std::endl;
+    };
+
+    cost_function.set_log_cost_function(write_to_file);
 
     while (cost_function.compute(hypothesis) > TRAINING_ENDED)
     {
               
-        static const double ALPHA = 0.001;
+        static const double ALPHA = 0.00001;
         std::vector<double> new_thethas_to_update_in_hypothesis = apply_gradient_decent_on_thethas(
             hypothesis,
             std::make_shared<CostFunction>(cost_function),
