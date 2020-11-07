@@ -147,13 +147,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cost_function.cpp" />
     <ClCompile Include="data_sample.cpp" />
+    <ClCompile Include="exceptions.cpp" />
+    <ClCompile Include="hypothesis.cpp" />
+    <ClCompile Include="hypothesis_printer.cpp" />
+    <ClCompile Include="hypothesis_printer_iterator.cpp" />
     <ClCompile Include="linear_regression.cpp" />
+    <ClCompile Include="load_data.cpp" />
     <ClCompile Include="simple_function.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cost_function.hpp" />
     <ClInclude Include="data_sample.hpp" />
+    <ClInclude Include="data_set.hpp" />
+    <ClInclude Include="error_codes.hpp" />
+    <ClInclude Include="exceptions.hpp" />
     <ClInclude Include="hypothesis.hpp" />
+    <ClInclude Include="hypothesis_printer.hpp" />
+    <ClInclude Include="hypothesis_printer_iterator.hpp" />
+    <ClInclude Include="load_data.hpp" />
     <ClInclude Include="simple_function.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
